@@ -8,9 +8,9 @@ public class DBConnection {
 	
 	static Connection conobj = null;
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		String url = "jdbc:mysql://localhost:3306/web_customer_tracker";
+		String url = "jdbc:mysql://localhost:3306/dbname";
 		String user = "root";
-		String passw = "admin";
+		String passw = "";
 		
 		if(conobj == null) {	
 		Class.forName("com.mysql.cj.jdbc.Driver");
