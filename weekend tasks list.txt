@@ -1,0 +1,26 @@
+Note : This task need to be completed before end of the tomorrow.
+Perform below Task (all practical task will be performed with jsp and servlet): 
+	1. What is Servlet and jsp.
+	2. What is Request Dispatcher and send redirect
+	3. Create demo of generic servlet and http servlet and when to use them in real life.
+	4.Create below pattern using servlet
+	   *
+	  2*2
+	 #2*2#
+	4#2*2#4
+	 #2*2#
+	  2*2
+	   *
+	5. What is Cookie and perform a below demo using it.
+		5.1 take below 6 input using text box
+			*	5 input for number
+			*	1 for operation which will be done for that number like (add,sub,mul,div etc)
+		5.2 display result of that on a second page and ask user to select any other operation to perform like (average of that no, min ,max or factorial)
+	6. What is HTTP Session and perform a demo of it using login and logout.
+		6.1 User will first login after that enter the marks of 7 subject and student name submit it.
+		6.2 use send redirect in to redirect user to result page.
+		6.3 on result page show the average of that marks and whether he cleared or not along with an college logo and name of the college and student as well.
+		6.4 store the student marks in database as well.
+	7. Create a forgot password and generate random highly secure password for that user based on their email-id.
+		7.1 on forgot password ask user to enter email-id and answer of 4 different security questions.
+		7.2 if email id matches with existing records then display newly generator password on jsp page.
