@@ -14,7 +14,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+<<<<<<< HEAD
   <title>User Auth System</title>
+=======
+  <title>User Auth. System</title>
+>>>>>>> 1aa57fe1b305f26a3dca543233feadadfde6f490
 
   <!-- Custom fonts for this template-->
   <link href="./css/all.min.css" rel="stylesheet" type="text/css">
