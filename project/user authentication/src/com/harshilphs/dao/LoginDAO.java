@@ -21,4 +21,33 @@ public class LoginDAO {
 			return false;
 		}
 	}
+	
+	public boolean findUser(String email) throws Exception {
+		String sql = "SELECT * FROM user where email=?";
+		PreparedStatement st = DBConnection.getConnection().prepareStatement(sql);		
+		st.setString(1, email);
+
+
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean updateUserPassword(String email,String password) throws Exception {
+		String sql = "update user set password = ? where email = ?";
+		PreparedStatement st = DBConnection.getConnection().prepareStatement(sql);		
+		st.setString(1, password);
+		st.setString(2, email);
+
+
+		int rs = st.executeUpdate();
+		if(rs>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

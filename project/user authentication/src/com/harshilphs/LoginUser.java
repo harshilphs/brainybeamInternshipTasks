@@ -18,9 +18,14 @@ import com.harshilphs.model.User;
 public class LoginUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		if(session.getAttribute("email")!=null){
+			res.sendRedirect("studentMarksEntry");
+		} else {
 		req.setAttribute("msg", "");
 		RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
 		rd.forward(req, res);
+		}
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -37,7 +42,7 @@ public class LoginUser extends HttpServlet {
 				Cookie c = new Cookie("cookie_email", user.getEmail());
 				res.addCookie(c);
 				
-				res.sendRedirect("dashboard.jsp");
+				res.sendRedirect("studentMarksEntry");
 			} else {
 				req.setAttribute("msg", "Invalid Credentials..");
 				RequestDispatcher rd = req.getRequestDispatcher("login.jsp");

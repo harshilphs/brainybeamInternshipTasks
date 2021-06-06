@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.harshilphs.dao.RegisterDAO;
 import com.harshilphs.model.User;
@@ -19,8 +20,14 @@ public class RegisterUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setAttribute("msg", "");
+		HttpSession session = req.getSession();
+		if(session.getAttribute("email")!=null){
+			res.sendRedirect("studentMarksEntry");
+		}else {
+		
 		RequestDispatcher rd = req.getRequestDispatcher("register.jsp");
 		rd.forward(req, res);
+		}
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

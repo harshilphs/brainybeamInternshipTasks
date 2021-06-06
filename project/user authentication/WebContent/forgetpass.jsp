@@ -14,7 +14,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Login</title>
+  <title>Forget Password</title>
 
   <!-- Custom fonts for this template-->
   <link href="./css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,9 +40,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                  </div>
+                  
                   <div class="text-center"><h6 style="color:red;">
                   <%
                   	String error="";
@@ -50,33 +48,36 @@
                   		error = request.getAttribute("msg").toString();
                   	}
                   %> <%=error%></h6>
-                  
-                  <h6 style="color:green;">${sucmsg}</h6>
                   <c:remove var="sucmsg" scope="session" /> 
                   
                   </div>
                   <div class="text-center">
-                  <form class="user" id="loginform" method="POST" action="loginUser">                 	
+                  <form class="user" id="forgetform" method="POST" action="forgotPassword">                 	
                     <div class="form-group">
                       <input type="text" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="text" name="q1" class="form-control form-control-user"  placeholder="From which direction sun rises?">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="q2" class="form-control form-control-user"  placeholder="Which animal is king of forest?">
+                    </div>
+                    <div class="form-group">
+                      <input type="number" name="q3" class="form-control form-control-user"  placeholder="65+97 is?" >
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="q4" class="form-control form-control-user"  placeholder="Tell the surname of prime minister..">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="pass" class="form-control form-control-user"  placeholder="Enter new password..">
                     </div>
                     <div class="text-center">
-                    <input type="submit" class="btn btn-primary btn-user" value="Login"/>
+                    <input type="submit" class="btn btn-primary btn-user" value="Reset Password"/>
                     </div>
                   </form>
                   <hr>
                   <div class="text-center">
                     <a class="small" href="index.jsp">Go to Home!</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="forgotPassword">Forgot Password?</a>
-                  </div>
-                  <hr>
-                  <div class="text-center">
-                    <a class="small" href="registerUser">Create an Account!</a>
                   </div>
                 </div>
               </div>
@@ -101,10 +102,8 @@
   <script src="./js/sb-admin-2.min.js"></script>
 
   <script>
-      $("#loginform").submit(function (e) {
+      $("#forgetform").submit(function (e) {
         var validationFailed = validate();
-        // do your validation here ...
-
         if (!validationFailed) {
             e.preventDefault();
             return false;
@@ -113,17 +112,17 @@
 
       function validate(){
         var email = $("input[name=email]").val();
-        var pass = $("input[name=password]").val();
-        if(email=="" && pass==""){
-            alert("Email and Password are required..");
+        var q1 = $("input[name=q1]").val();
+        var q2 = $("input[name=q2]").val();
+        var q3 = $("input[name=q3]").val();
+        var q4 = $("input[name=q4]").val();
+        var pass = $("input[name=pass]").val();
+        if(email=="" || q1=="" || q2=="" || q3 =="" ||q4=="" || pass=""){
+            alert("All fields are required..");
             return false;
         }
         if(!IsEmail(email)){
             alert("Enter valid email..");
-            return false;
-        }
-        if(!pass){
-            alert("Password is required..");
             return false;
         }
         return true;
