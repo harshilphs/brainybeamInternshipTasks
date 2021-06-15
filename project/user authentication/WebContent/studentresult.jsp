@@ -79,7 +79,7 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 		          
-		  <h3><a href="#" style="text-decoration:none;">Student Marks Entry Portal</a></h3>
+		  <h3><a href="studentMarksEntry" style="text-decoration:none;">Student Marks Entry Portal</a></h3>
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
           	
@@ -161,7 +161,7 @@
                 	</table> 
                 	
                 	<div class="text-center">
-                	<h6>Total : <%=total %></h6>
+                	<h6>Total : <%=total %> / 700</h6>
                 	<h6>Percentage : <%=pr %>%</h6>
                 	<h5><%=res %></h5>
                 	</div>               

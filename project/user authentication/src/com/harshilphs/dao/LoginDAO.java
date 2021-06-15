@@ -4,18 +4,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.harshilphs.model.User;
 
 public class LoginDAO {
-	public boolean loginUser(User user) throws Exception {
+	public boolean loginUser(User user,HttpServletRequest req) throws Exception {
 		String sql = "SELECT * FROM user where email=? and password=?";
 		PreparedStatement st = DBConnection.getConnection().prepareStatement(sql);		
 		st.setString(1, user.getEmail());
 		st.setString(2, user.getPassword());
 
-
+		User sessionUser = new User();
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
+			sessionUser.setId(rs.getInt("id"));
+			sessionUser.setFirstname(rs.getString("firstname"));
+			sessionUser.setLastname(rs.getString("lastname"));
+			sessionUser.setEmail(rs.getString("email"));
+			sessionUser.setMobile(rs.getString("mobile"));
+			sessionUser.setPassword(rs.getString("password"));
+			HttpSession session = req.getSession();
+			session.setAttribute("user", sessionUser);
 			return true;
 		} else {
 			return false;
@@ -30,6 +41,7 @@ public class LoginDAO {
 
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
+
 			return true;
 		} else {
 			return false;

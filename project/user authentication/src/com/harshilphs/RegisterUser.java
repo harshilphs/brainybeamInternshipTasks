@@ -22,7 +22,7 @@ public class RegisterUser extends HttpServlet {
 		req.setAttribute("msg", "");
 		HttpSession session = req.getSession();
 		if(session.getAttribute("email")!=null){
-			res.sendRedirect("studentMarksEntry");
+			res.sendRedirect("complaintDashboard");
 		}else {
 		
 		RequestDispatcher rd = req.getRequestDispatcher("register.jsp");

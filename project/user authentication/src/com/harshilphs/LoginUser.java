@@ -20,7 +20,7 @@ public class LoginUser extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		if(session.getAttribute("email")!=null){
-			res.sendRedirect("studentMarksEntry");
+			res.sendRedirect("complaintDashboard");
 		} else {
 		req.setAttribute("msg", "");
 		RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
@@ -34,15 +34,15 @@ public class LoginUser extends HttpServlet {
 		user.setPassword(req.getParameter("password"));
 		
 		LoginDAO loguser = new LoginDAO();
-		try {
-			if(loguser.loginUser(user)) {
+
+		try { 
+			if(loguser.loginUser(user,req)) {
 				HttpSession session = req.getSession();
 				session.setAttribute("email", user.getEmail());
-				
 				Cookie c = new Cookie("cookie_email", user.getEmail());
 				res.addCookie(c);
 				
-				res.sendRedirect("studentMarksEntry");
+				res.sendRedirect("complaintDashboard");
 			} else {
 				req.setAttribute("msg", "Invalid Credentials..");
 				RequestDispatcher rd = req.getRequestDispatcher("login.jsp");

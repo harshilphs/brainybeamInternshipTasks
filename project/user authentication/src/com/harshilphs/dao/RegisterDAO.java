@@ -17,9 +17,13 @@ public class RegisterDAO {
 			return false;
 		} 		
 		
-		Statement st = DBConnection.getConnection().createStatement();
-		String sql = "insert into user(firstname,lastname,email,mobile,password) values('"+user.getFirstname()+"','"+user.getLastname()
-		+"','"+user.getEmail()+"','"+user.getMobile()+"','"+user.getPassword()+"')";
+		String sql = "insert into user(firstname,lastname,email,mobile,password) values(?,?,?,?,?)";
+		PreparedStatement st = DBConnection.getConnection().prepareStatement(sql);
+		st.setString(1, user.getFirstname());
+		st.setString(2, user.getLastname());
+		st.setString(3, user.getEmail());
+		st.setString(4, user.getMobile());
+		st.setString(5, user.getPassword());
 		int success = st.executeUpdate(sql);		
 		if(success>0) {
 			return true;
